@@ -1,2 +1,95 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+
+#include <iostream>
+#include <locale.h>
+using namespace std;
+
+int ost(int a)
+{
+    int ostatok, bit = 0;
+    do {
+        ostatok = a % 2;
+        a = ostatok;
+        bit++;
+    } while (ostatok > 1);
+    return bit;
+}
+
+int main()
+{
+    setlocale(LC_ALL, "Rus");
+    cout << "1. Тренажёр ЕГЭ\n";
+    cout << "2. Вывод заданий в файл\n";
+    cout << "3. Выход\n";
+    int Number_type;
+    scanf("%d", Number_type);
+    switch (Number_type)
+    {
+    case 1:
+    {
+        int Number_task;
+        printf("Введите количество заданий");
+        scanf(" % d", &Number_task);
+        switch (Number_task);
+    case 1: {
+        int time_sec, resolution_type1, sampling_rate_type1, communication_channel, type1_answer;
+        time_sec = (rand() % (12) + 1) * 5;
+        resolution_type1 = (rand() % (2) + 1) * 2;
+        sampling_rate_type1 = rand() % (2) + 1;
+        communication_channel = (rand() % (4) + 1) * 2;
+        printf("Музыкальный фрагмент был оцифрован и записан в виде файла без использования сжатия данных.\n");
+        printf("Получившийся файл был передан в город А по каналу связи за %d секунд.\n", time_sec);
+        printf("Затем тот же музыкальный фрагмент был оцифрован повторно с разрешением в %d раза выше и частотой дискретизации в %d раза меньше, чем в первый раз.\n", resolution_type1, sampling_rate_type1);
+        printf("Сжатие данных не производилось. Полученный файл был передан в город Б; пропускная способность канала связи с городом Б в %d раза выше, чем канала связи с городом А.\n", communication_channel);
+        printf("Сколько секунд длилась передача файла в город Б ? В ответе запишите только целое число, единицу измерения писать не нужно.");
+        type1_answer = ((resolution_type1 / sampling_rate_type1) * time_sec) / communication_channel;
+        int choose_answer;
+        printf("Ввести ответ? (да нет)"); }
+    case 2: {int resolution_type2_1, sampling_rate_type2_1, resolution_type2_2, sampling_rate_type2_2, size_file, type2_answer;
+        resolution_type2_1 = (rand() % (2) + 1) * 32;
+        sampling_rate_type2_1 = (rand() % (2) + 1) * 32;
+        resolution_type2_2 = (rand() % (2) + 1) * 8;
+        sampling_rate_type2_2 = (rand() % (2) + 1) * 8;
+        size_file = (rand() % (23) + 8) * 2;
+        printf("Производится звукозапись музыкального фрагмента в формате стерео (двухканальная запись) с частотой дискретизации %d кГц и %d-битным разрешением.\n", sampling_rate_type2_1, resolution_type2_1);
+        printf("Результаты записываются в файл, сжатие данных не производится; размер полученного файла %d Мбайт.\n", size_file);
+        printf("Затем производится повторная запись этого же фрагмента в формате моно (одноканальная запись) с частотой дискретизации %d кГц и %d-битным разрешением.\n", sampling_rate_type2_2, resolution_type2_2);
+        printf("Сжатие данных не производилось.\n");
+        printf("Укажите размер файла в Мбайт, полученного при повторной записи.В ответе запишите только целое число, единицу измерения писать не нужно.\n");
+        type2_answer = size_file / ((resolution_type2_1 / resolution_type2_2) * (sampling_rate_type2_1 / sampling_rate_type2_2) * 2);
+        printf("Ввести ответ? (да(1) нет(2))");
+        int choose;
+        scanf("%d", &choose);
+        if (choose == 1)
+        {
+            int type2_answer_pol;
+            scanf("%d", &type2_answer_pol);
+            if (type2_answer == type2_answer_pol) {
+                printf("Ответ правильный");
+            }
+            printf("Ответ неправильный");
+        }
+        else printf("Ответ: %d\n", type2_answer); }
+    case 3: {int pixels, colors, type3_answer, type3_answer_pol;
+        pixels = (rand() % (8) + 1) * 128;
+        colors = pow(2, (rand() % (10) + 1));
+        printf("Какой минимальный объём памяти(в Кбайт) нужно зарезервировать, чтобы можно было сохранить любое растровое изображение размером %d×%d пикселей.\n", pixels, pixels);
+        printf("При условии, что в изображении могут использоваться %d различных цветов ?\n", colors);
+        printf("В ответе запишите только целое число, единицу измерения писать не нужно.\n");
+        int ostatok, bit = 0;
+        type3_answer = (ost(pixels) * pixels * pixels) / 8 / 1024;
+        printf("Ввести ответ? (да(1) нет(2))");
+        int choose;
+        scanf("%d", &choose);
+        if (choose == 1)
+        {
+            int type3_answer_pol;
+            scanf("%d", &type3_answer_pol);
+            if (type3_answer == type3_answer_pol) {
+                printf("Ответ правильный");
+            }
+            printf("Ответ неправильный");
+        }
+        else printf("Ответ: %d\n", type3_answer); }
+          return 0;
+    }
+    }
