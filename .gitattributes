@@ -24,7 +24,7 @@ int main()
     printf("2. Вывод заданий в файл\n");
     printf("3. Выход\n");
     int Number_type;
-    scanf("%d", Number_type);
+    scanf("%d", &Number_type);
     switch (Number_type)
     {
     case 1:
@@ -62,7 +62,7 @@ int main()
             printf("Ответ неправильный\n");
         }
         else printf("Ответ: %d\n", type1_answer); 
-        break}
+        break;}
     case 3: {int resolution_type2_1, sampling_rate_type2_1, resolution_type2_2, sampling_rate_type2_2, size_file, type2_answer;
         resolution_type2_1 = (rand() % (2) + 1) * 32;
         sampling_rate_type2_1 = (rand() % (2) + 1) * 32;
@@ -90,7 +90,7 @@ int main()
             printf("Ответ неправильный\n");
         }
         else printf("Ответ: %d\n", type2_answer); 
-        break}
+        break;}
     case 4: {int pixels, colors, type3_answer, type3_answer_pol;
         pixels = (rand() % (8) + 1) * 128;
         colors = pow(2, (rand() % (10) + 1));
@@ -114,9 +114,10 @@ int main()
             printf("Ответ неправильный\n");
         }
         else printf("Ответ: %d\n", type3_answer); 
-        break}
+        break;}
     };};
-    printf("Количество правильных ответов: %d\n", right_task)
+    printf("Количество правильных ответов: %d\n", right_task);
     }return 0;
     
+    };
     }
