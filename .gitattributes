@@ -1,6 +1,9 @@
 
-#include <iostream>
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
 #include <locale.h>
+#include <math.h>
 using namespace std;
 
 int ost(int a)
@@ -17,20 +20,22 @@ int ost(int a)
 int main()
 {
     setlocale(LC_ALL, "Rus");
-    cout << "1. Тренажёр ЕГЭ\n";
-    cout << "2. Вывод заданий в файл\n";
-    cout << "3. Выход\n";
+    printf("1. Тренажёр ЕГЭ\n");
+    printf("2. Вывод заданий в файл\n");
+    printf("3. Выход\n");
     int Number_type;
     scanf("%d", Number_type);
     switch (Number_type)
     {
     case 1:
     {
-        int Number_task;
+        int Number_task, i, choose_task, right_task = 0;
         printf("Введите количество заданий");
         scanf(" % d", &Number_task);
-        switch (Number_task);
-    case 1: {
+        for (i=0; i<Number_task; i++){
+        choose_task = rand()%(3)+2;
+        switch (choose_task)
+    {case 2: {
         int time_sec, resolution_type1, sampling_rate_type1, communication_channel, type1_answer;
         time_sec = (rand() % (12) + 1) * 5;
         resolution_type1 = (rand() % (2) + 1) * 2;
@@ -42,9 +47,23 @@ int main()
         printf("Сжатие данных не производилось. Полученный файл был передан в город Б; пропускная способность канала связи с городом Б в %d раза выше, чем канала связи с городом А.\n", communication_channel);
         printf("Сколько секунд длилась передача файла в город Б ? В ответе запишите только целое число, единицу измерения писать не нужно.");
         type1_answer = ((resolution_type1 / sampling_rate_type1) * time_sec) / communication_channel;
-        int choose_answer;
-        printf("Ввести ответ? (да нет)"); }
-    case 2: {int resolution_type2_1, sampling_rate_type2_1, resolution_type2_2, sampling_rate_type2_2, size_file, type2_answer;
+        printf("Ввести ответ? (да(1) нет(2))");
+        int choose;
+        scanf("%d", &choose);
+        if (choose == 1)
+        {
+            int type1_answer_pol;
+            printf("\nВведите ответ: ");
+            scanf("%d", &type1_answer_pol);
+            if (type1_answer == type1_answer_pol) {
+                printf("\nОтвет правильный\n");
+                right_task++;
+            }
+            printf("Ответ неправильный\n");
+        }
+        else printf("Ответ: %d\n", type1_answer); 
+        break}
+    case 3: {int resolution_type2_1, sampling_rate_type2_1, resolution_type2_2, sampling_rate_type2_2, size_file, type2_answer;
         resolution_type2_1 = (rand() % (2) + 1) * 32;
         sampling_rate_type2_1 = (rand() % (2) + 1) * 32;
         resolution_type2_2 = (rand() % (2) + 1) * 8;
@@ -62,14 +81,17 @@ int main()
         if (choose == 1)
         {
             int type2_answer_pol;
+            printf("\nВведите ответ: ");
             scanf("%d", &type2_answer_pol);
             if (type2_answer == type2_answer_pol) {
-                printf("Ответ правильный");
+                printf("\nОтвет правильный\n");
+                right_task++;
             }
-            printf("Ответ неправильный");
+            printf("Ответ неправильный\n");
         }
-        else printf("Ответ: %d\n", type2_answer); }
-    case 3: {int pixels, colors, type3_answer, type3_answer_pol;
+        else printf("Ответ: %d\n", type2_answer); 
+        break}
+    case 4: {int pixels, colors, type3_answer, type3_answer_pol;
         pixels = (rand() % (8) + 1) * 128;
         colors = pow(2, (rand() % (10) + 1));
         printf("Какой минимальный объём памяти(в Кбайт) нужно зарезервировать, чтобы можно было сохранить любое растровое изображение размером %d×%d пикселей.\n", pixels, pixels);
@@ -77,19 +99,24 @@ int main()
         printf("В ответе запишите только целое число, единицу измерения писать не нужно.\n");
         int ostatok, bit = 0;
         type3_answer = (ost(pixels) * pixels * pixels) / 8 / 1024;
-        printf("Ввести ответ? (да(1) нет(2))");
+        printf("Ввести ответ? (да(1) нет(2))\n");
         int choose;
         scanf("%d", &choose);
         if (choose == 1)
         {
             int type3_answer_pol;
+            printf("\nВведите ответ: ");
             scanf("%d", &type3_answer_pol);
             if (type3_answer == type3_answer_pol) {
-                printf("Ответ правильный");
+                printf("\nОтвет правильный\n");
+                right_task++;
             }
-            printf("Ответ неправильный");
+            printf("Ответ неправильный\n");
         }
-        else printf("Ответ: %d\n", type3_answer); }
-          return 0;
-    }
+        else printf("Ответ: %d\n", type3_answer); 
+        break}
+    };};
+    printf("Количество правильных ответов: %d\n", right_task)
+    }return 0;
+    
     }
